@@ -24,6 +24,14 @@ class ViewController: UIViewController {
     //    }
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        brain.addUnaryOperation(named: "✅") { [unowned weakSelf = self] in
+            weakSelf.display.textColor = UIColor.green
+            return sqrt($0)
+        }
+    }
+    
     @IBOutlet weak var display: UILabel! //V层中的Label outlet
     
     private var brain = CalculatorBrain() //实例化M层模型
